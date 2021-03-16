@@ -1,0 +1,386 @@
+/*** Global ***/
+
+html {
+    height: 100%;
+}
+
+
+/*** 1. The Essential Code ***/
+
+body {
+    height:calc(100% - 1em);
+    min-width: 630px;
+    /* 2 x (LC fullwidth + CC padding) + RC fullwidth */
+}
+
+#container {
+    padding-left: 150px;
+    /* LC fullwidth */
+    padding-right: 390px;
+    /* RC fullwidth + CC padding */
+}
+
+#container .column {
+    /* Float + Relative position */
+    position: relative;
+    float: left;
+}
+
+#center {
+    padding: 10px 20px;
+    /* CC padding */
+    width: 100%;
+}
+
+#left {
+    width: 130px;
+    /* LC width */
+    padding: 0 10px;
+    /* LC padding */
+    right: 190px;
+    /* LC fullwidth + CC padding */
+    margin-left: -100%;
+}
+
+#right {
+    width: 350px;
+    /* RC width */
+    padding: 0 10px;
+    /* RC padding */
+    margin-right: -100%;
+}
+
+#footer {
+    /* Clare Float */
+    clear: both;
+}
+
+/*** 2. Equal-height Columns ***/
+
+#container {
+    overflow: hidden;
+}
+
+#container .column {
+    padding-bottom: 1001em;
+    /* X + padding-bottom */
+    margin-bottom: -1000em;
+    /* X */
+}
+
+
+/*** 3. IE Fix ***/
+* html #left {
+    left: 150px;
+    /* RC fullwidth */
+}
+
+/*** IE Footer Fix ***/
+
+* html body {
+    overflow: hidden;
+}
+
+* html #footer-wrapper {
+    float: left;
+    position: relative;
+    width: 100%;
+    padding-bottom: 10010px;
+    margin-bottom: -10000px;
+    background: #FFF;
+    /*** Same as body background ***/
+}
+
+/*** Just for Looks ***/
+body {
+    margin: 0;
+    padding: 0;
+    background: #FFF;
+}
+
+#header {
+    height: 34px;
+    text-align: center;
+    padding: 0.3em 0;
+    background: #222;
+}
+#footer {
+    font-size: large;
+    text-align: center;
+    padding: 0.3em 0;
+    background: rgb(255, 255, 255);
+}
+
+#left {
+    background: rgb(255, 255, 255);
+    vertical-align: top;
+}
+
+#center {
+    background: rgb(255, 255, 255);
+}
+
+#right {
+    background: rgb(255, 255, 255);
+}
+
+#container .column {
+    padding-top: 1em;
+    text-align: justify;
+}
+
+.top-bar {
+    background: #222;
+    font-size: 14px;
+    color: #fff;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    -moz-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -ms-flex-wrap: wrap-reverse;
+    flex-wrap: wrap-reverse;
+}
+
+.download-app, .copyright-complaint {
+    border-right: 1px solid #3a3a3a;
+    padding: 10px;
+}
+
+.register, .other-app{
+    padding: 10px;
+}
+
+.weather-bar {
+    display: inline-block;
+    padding: 10px;
+}
+
+.location, .city-state, .city_temperature{
+    padding: 5px;
+}
+
+.header-right-nav {
+    padding: 10px;
+}
+
+.user-nav-list {
+    padding: 5px;
+}
+
+.logo {
+    display: block;
+    width: 130px;
+    height: 28px;
+    margin-bottom: 16px;
+}
+
+.logo img {
+    width: 130px;
+    height: 28px;
+}
+
+ul {
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+}
+
+li {
+    display: list-item;
+    height : 40px;
+    list-style-type: none;
+    text-align: -webkit-match-parent;
+    font-weight: bold;
+    font-size: normal;
+}
+
+.left-list {
+
+}
+
+.search-wrapper {
+    display: flex;
+    height: 40px;
+}
+
+.search-input {
+    border: 1px solid #e8e8e8;
+    font-size: 14px;
+    width: 230px;
+    background-color: #f5f6f7;
+}
+
+.right-search-button {
+    height: 40px;
+    color: #fff;
+    font-size: 14px;
+    background-color: #208eda;
+    border: 1px solid #208eda;
+    border-radius: 4px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    position: relative;
+    left: -1px;
+    padding: 0px 24px;
+    cursor: pointer;
+}
+
+.login-wrapper {
+    margin: 16px 20px 20px 0px;
+    padding: 10px 10px 12px;
+    background: #e8e8e8;
+}
+
+.login-inner {
+    text-align: center;
+    background: #fff;
+    border: 1px solid #e8e8e8;
+}
+
+.login-btn {
+    margin: 30px auto 14px auto;
+    width: 300px;
+    height: 40px;
+    color: #fff;
+    background: #ed4040;
+    border: 1px solid #ed4040;
+    text-align:center
+}
+
+.pane-module {
+    width: 330px;
+    border-top: 2px solid #ed4040;
+    background: #e8e8e8;
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+
+.pane-module .pane-module-head {
+    color: #222;
+    padding: 0 10px;
+    margin-bottom: 18px;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.links-wrapper {
+    overflow: hidden;
+    padding-left: 10px;
+    margin-left: 0px;
+    margin-right: -20px;
+    margin-bottom: -20px;
+    font-size: normal;
+}
+
+.links-wrapper .item{
+    float: left;
+    height: 30px;
+    margin: 0 20px 7px 0;
+    display: list-item;
+    list-style-type: none;
+    text-align: -webkit-match-parent;
+    font-weight: lighter;
+    font-size: 15px;
+    color:rgb(71, 71, 71);
+}
+
+.news {
+    border-bottom: 1px solid #e8e8e8;
+    padding: 8px;
+}
+
+.title-box {
+    font-size: 20px;
+    font-weight: bolder;
+}
+
+
+.foot-bar {
+    margin-top: 10px;
+}
+
+.tag-style-vedio{
+    font-size: 12px;
+    padding:1px 2px;
+    border: 1px solid;
+    border-color: #ff7920;
+    color: #ff7920;
+}
+
+.tag-style-other{
+    font-size: 12px;
+    padding:1px 2px;
+    border: 1px solid;
+    border-color: #206eff;
+    color: #206eff;
+}
+.tag-style-social{
+    font-size: 12px;
+    padding:1px 2px;
+    border: 1px solid;
+    border-color: #20ffa9;
+    color: #20ffa9;
+}
+.foot-bar-action {
+    display: inline-block;
+    font-size: 12px;
+    vertical-align: middle;
+}
+
+.foot-bar-left .avatar{
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    vertical-align: middle;
+    margin:0 3px;
+    overflow: hidden;
+}
+.foot-bar .foot-bar-action.avatar>img {
+    width: 100%;
+    height: 100%;
+}
+
+.foot-bar .foot-bar-action.sourse {
+    font-size: 14px;
+    color: #777;
+}
+
+.foot-bar .foot-bar-action.time {
+    font-size: 14px;
+    color: #777;
+}
+
+.img-news {
+    height: 100px;
+    border-bottom: 1px solid #e8e8e8;
+    padding: 8px;
+}
+
+.img-news .img-news-lbox1 {
+    margin-right: 10px;
+    width: 140px;
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: middle;
+}
+.img-news-lbox>img {
+    display: inline-block;
+    max-width: 100%;
+    height: auto;
+    vertical-align: middle;
+}
+.img-news .img-news-rbox{
+    display: inline-block;
+    height: 60%;
+    width: 500px;
+    overflow: hidden;
+    vertical-align: middle;
+}
+
