@@ -52,9 +52,7 @@ export default function SliderContainer(props) {
 
   const measuredRef = useCallback((node) => {
     if (node !== null) {
-      setWidth(node.getBoundingClientRect().width)
-      // console.log("node",node)
-      // console.log("1",node.getBoundingClientRect().width)
+      setWidth(node.getBoundingClientRect().width)//获取宽度
     }
   }, [])
 
@@ -86,47 +84,39 @@ export default function SliderContainer(props) {
  */
 
 function Slider({ items, itemWidth = 'full', visible = items.length - 2, style, children, showButtons = true, showCounter = true }) {
-  if (items.length <= 2)
-    console.warn("The slider doesn't handle two or less items very well, please use it with an array of at least 3 items in length")
+  //当图片少于等于2张时候，显示情况不太好
   const windowWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth
   let width = itemWidth === 'full' ? windowWidth : Math.ceil(itemWidth)
   const idx = useCallback((x, l = items.length) => (x < 0 ? x + l : x) % l, [items])//x的id
-  const getPos = useCallback((i, firstVis, firstVisIdx) => idx(i - firstVis + firstVisIdx), [idx])//
+  const getPos = useCallback((i, firstVis, firstVisIdx) => idx(i - firstVis + firstVisIdx), [idx])//x的位置
   // Important only if specifyng width, centers the element in the slider
   const offset = 0
   const [springs, set] = useSprings(items.length, (i) => ({ x: (i < items.length - 1 ? i : -1) * width + offset }))
-  //
+  //利用use-spring把图片拖到相应的位置
   const prev = useRef([0, 1])
   const index = useRef(0)//当前的图片索引
   const [active, setActive] = useState(1)
   const runSprings = useCallback(
     (y, vy, down, xDir, cancel, xMove) => {
       // This decides if we move over to the next slide or back to the initial
-      // xDir direction
+      // xDir:direction
       if (!down) {
         //index.current += ((-xMove + (width + xMove)) / width) * (xDir > 0 ? -1 : 1)
         index.current += xDir > 0 ? -1 : 1
-        //console.log(index.current)
-        // cancel()
       }
       if (index.current + 1 > items.length) {
         setActive((index.current % items.length) + 1)
-        console.log(active)
       } else if (index.current < 0) {
         setActive(items.length + ((index.current + 1) % items.length))
       } else {
         setActive(index.current + 1)
-        //console.log(active)
       }
-      console.log('index.current',index.current)
       // The actual scrolling value
       const finalY = index.current * width
       // Defines currently visible slides
       const firstVis = idx(Math.floor(finalY / width) % items.length)
-      console.log('firstVis',firstVis)
       //const firstVisIdx = vy < 0 ? items.length - visible - 1 : 1
       const firstVisIdx = 1
-      //console.log('ss',firstVisIdx)
       set((i) => {
         const position = getPos(i, firstVis, firstVisIdx)
         const prevPosition = getPos(i, prev.current[0], prev.current[1])
@@ -134,8 +124,7 @@ function Slider({ items, itemWidth = 'full', visible = items.length - 2, style, 
         return {
           // x is the position of each of our slides
           x: (-finalY % (width * items.length)) + width * rank + (down ? xMove : 0) + offset,
-          // this defines if the movement is immediate 
-          //So when an item is moved from one end to the other we don't see it moving
+          //如果一张图片从一边到另一边，我们就看不到这个过程
           immediate: vy < 0 ? prevPosition > position : prevPosition < position
         }
       })
