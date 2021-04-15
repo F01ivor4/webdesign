@@ -4,4 +4,4 @@
 
 演示效果：
 
-![](D:\code\webdesign\lesson-5-homework\my-app\public\演示.gif)
+![](.\my-app\public\演示.gif)
