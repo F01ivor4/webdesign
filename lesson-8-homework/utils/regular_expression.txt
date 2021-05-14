@@ -1,0 +1,8 @@
+className=\{`\$\{styles.([^`}]+)\} \$\{styles.([^`}]+)\} \$\{styles.([^`}]+)\} \$\{styles.([^`}]+)\} \$\{styles.([^`}]+)\}`\}
+className="$1 $2 $3 $4 $5"
+
+class=\{styles.([^`}]+)\}
+className="$1"
+
+className=\{`\$\{s.([^`}]+) \$\{s.([^`}]+)\}`\}
+className="$1"
